@@ -36,6 +36,13 @@ export class ProductListComponent implements OnInit, OnDestroy{
         product.productName.toLocaleLowerCase().includes(filterBy));
     }
 
+    performFilter(filterBy: string) :IProduct[]{
+      filterBy = filterBy.toLocaleLowerCase();
+      return this.products.filter(
+        (product :IProduct) => product.productName.toLocaleLowerCase().includes(filterBy)
+        )
+    }
+
     ngOnInit(): void {
       this.sub = this.productService.getProducts().subscribe({
           next: products => {
@@ -44,6 +51,7 @@ export class ProductListComponent implements OnInit, OnDestroy{
           },
           error: err => this.errorMessage = err
       });
+
       this.filteredProducts = this.products;
       this.listFilter = '';
       console.log('In OnInit');
