@@ -30,11 +30,6 @@ export class ProductListComponent implements OnInit, OnDestroy{
 
     constructor(private productService: ProductService){}    
 
-    performFilter(filterBy: string) :IProduct[]{
-      filterBy = filterBy.toLocaleLowerCase();
-      return this.products.filter((product: IProduct) =>
-        product.productName.toLocaleLowerCase().includes(filterBy));
-    }
 
     performFilter(filterBy: string) :IProduct[]{
       filterBy = filterBy.toLocaleLowerCase();
